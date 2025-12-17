@@ -6,7 +6,7 @@ import net.runelite.client.config.ConfigItem;
 import net.runelite.client.config.ConfigSection;
 import java.awt.Color;
 
-@ConfigGroup("example")
+@ConfigGroup("noHintarrow")
 public interface NoHintarrowConfig extends Config
 {
 

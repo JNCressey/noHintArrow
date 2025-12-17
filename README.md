@@ -1,4 +1,4 @@
-# No Hint-Arrows
+# No Hint-Arrow
 
 Completely remove the flashing yellow hint arrow, or let it only show for a set length of seconds.
 

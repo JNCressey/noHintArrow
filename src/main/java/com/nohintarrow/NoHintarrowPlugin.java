@@ -29,7 +29,7 @@ public class NoHintarrowPlugin extends Plugin
 	@Inject
 	private ChatMessageManager chatMessageManager;
 
-	// Tracks how many ticks the arrow has been active
+	// Tracks how many ticks the arrow has been active for when to clear hint arrow
 	private int arrowActiveTicks = 0;
 
 	@Provides
@@ -44,33 +44,45 @@ public class NoHintarrowPlugin extends Plugin
 		// Check if a hint arrow is active
 		if(client.hasHintArrow())
 		{
-			arrowActiveTicks++;
+			arrowActiveTicks++; //increment counter
 
-			// Convert seconds to game ticks (1 tick = 0.6s)
-			int maxTicks = (int) Math.ceil(config.clearDelaySeconds() / 0.6);
-
-			if (arrowActiveTicks >= maxTicks)
+			if (arrowActiveTicks >= getDelayTicks())
 			{
-				client.clearHintArrow();
-				arrowActiveTicks = 0; // reset counter
-				if (config.doAlerts()) {
-					chatMessageManager.queue(
-							QueuedMessage.builder()
-									.type(ChatMessageType.GAMEMESSAGE) // Game info style
-									.runeLiteFormattedMessage(
-											String.format("<col=%06x>", config.alertColor().getRGB() & 0xFFFFFF)
-													+ "Hint arrow removed."
-													+ "</col>"
-									)
-									.build()
-					);
-				}
+				clearHintArrow();
 			}
 		}
 		else
 		{
 			// No arrow active, reset counter
 			arrowActiveTicks = 0;
+		}
+	}
+
+
+	// the user config for clear delay converted to game ticks (1 tick = 0.6s)
+	private int getDelayTicks(){
+		return (int) Math.ceil(config.clearDelaySeconds() / 0.6);
+	}
+
+
+	private void clearHintArrow()
+	{
+		client.clearHintArrow();
+
+		arrowActiveTicks = 0; // reset counter
+
+		// chatbox alert if enabled
+		if (config.doAlerts()) {
+			chatMessageManager.queue(
+					QueuedMessage.builder()
+							.type(ChatMessageType.GAMEMESSAGE) // Game info style
+							.runeLiteFormattedMessage(
+									String.format("<col=%06x>", config.alertColor().getRGB() & 0xFFFFFF)
+											+ "Hint arrow removed."
+											+ "</col>"
+							)
+							.build()
+			);
 		}
 	}
 

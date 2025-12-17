@@ -71,7 +71,8 @@ public class NoHintarrowPlugin extends Plugin
 	public void onGameTick(GameTick event)
 	{
 		// Check if a hint arrow is active
-		if (client.getHintArrowNpc() != -1 || client.getHintArrowPlayer() != -1 || client.getHintArrowX() != -1)
+		//if (client.getHintArrowNpc() != -1 || client.getHintArrowPlayer() != -1 || client.getHintArrowPoint() != -1)
+		if(client.hasHintArrow())
 		{
 			arrowActiveTicks++;
 

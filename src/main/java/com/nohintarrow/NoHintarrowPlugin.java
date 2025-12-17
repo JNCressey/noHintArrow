@@ -5,17 +5,13 @@ import javax.inject.Inject;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.ChatMessageType;
 import net.runelite.api.Client;
-import net.runelite.api.GameState;
-import net.runelite.api.events.GameStateChanged;
 import net.runelite.api.events.GameTick;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.Subscribe;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
-import net.runelite.api.ChatMessageType;
 import net.runelite.client.chat.ChatMessageManager;
 import net.runelite.client.chat.QueuedMessage;
-import java.awt.Color;
 
 @Slf4j
 @PluginDescriptor(
@@ -57,16 +53,18 @@ public class NoHintarrowPlugin extends Plugin
 			{
 				client.clearHintArrow();
 				arrowActiveTicks = 0; // reset counter
-				chatMessageManager.queue(
-						QueuedMessage.builder()
-								.type(ChatMessageType.GAMEMESSAGE) // Game info style
-								.runeLiteFormattedMessage(
-										String.format("<col=%06x>",config.gameMessageColor().getRGB() & 0xFFFFFF)
-												+ "Hint arrow removed."
-												+ "</col>"
-								)
-								.build()
-				);
+				if (config.doAlerts()) {
+					chatMessageManager.queue(
+							QueuedMessage.builder()
+									.type(ChatMessageType.GAMEMESSAGE) // Game info style
+									.runeLiteFormattedMessage(
+											String.format("<col=%06x>", config.alertColor().getRGB() & 0xFFFFFF)
+													+ "Hint arrow removed."
+													+ "</col>"
+									)
+									.build()
+					);
+				}
 			}
 		}
 		else

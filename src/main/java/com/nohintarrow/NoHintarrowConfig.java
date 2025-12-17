@@ -20,13 +20,22 @@ public interface NoHintarrowConfig extends Config
 	}
 
 	@ConfigItem(
-			keyName = "gameMessageColor",
-			name = "Game Message Color",
-			description = "Choose the color for game info messages"
+			keyName = "doAlerts",
+			name = "Do Alerts",
+			description = "Show message in chat when a hint arrow is removed"
 	)
-	default Color gameMessageColor()
+	default boolean doAlerts()
 	{
-		return Color.GREEN;
+		return true; // default will show alerts
+	}
+	@ConfigItem(
+			keyName = "alertColor",
+			name = "Alert Color",
+			description = "Choose the color for alert text"
+	)
+	default Color alertColor()
+	{
+		return new Color(0x7F007F); // default same purple as default trade messages
 	}
 
 }

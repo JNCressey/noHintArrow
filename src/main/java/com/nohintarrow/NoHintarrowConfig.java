@@ -34,7 +34,8 @@ public interface NoHintarrowConfig extends Config
 			keyName = "doAlerts",
 			name = "Do Alerts",
 			description = "Show message in chat when a hint arrow is removed",
-			section = alertSection
+			section = alertSection,
+			position = 0
 	)
 	default boolean doAlerts()
 	{
@@ -46,7 +47,8 @@ public interface NoHintarrowConfig extends Config
 			keyName = "alertColor",
 			name = "Alert Color",
 			description = "Choose the color for alert text",
-			section = alertSection
+			section = alertSection,
+			position = 1
 	)
 	default Color alertColor()
 	{

@@ -18,7 +18,7 @@ import java.awt.*;
 import javax.annotation.Nullable;
 import com.google.common.base.Strings;
 
-public class NoHintarrowOverlay extends Overlay{
+public class NoHintArrowOverlay extends Overlay{
 
     private static final int MAX_DRAW_DISTANCE = 32;
 
@@ -32,10 +32,10 @@ public class NoHintarrowOverlay extends Overlay{
     private Client client;
 
     @Inject
-    private NoHintarrowConfig config;
+    private NoHintArrowConfig config;
 
     @Inject
-    public NoHintarrowOverlay() {
+    public NoHintArrowOverlay() {
         setPosition(OverlayPosition.DYNAMIC);
         setLayer(OverlayLayer.ALWAYS_ON_TOP);
     }

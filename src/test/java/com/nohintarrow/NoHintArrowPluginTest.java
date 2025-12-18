@@ -3,11 +3,11 @@ package com.nohintarrow;
 import net.runelite.client.RuneLite;
 import net.runelite.client.externalplugins.ExternalPluginManager;
 
-public class NoHintarrowPluginTest
+public class NoHintArrowPluginTest
 {
 	public static void main(String[] args) throws Exception
 	{
-		ExternalPluginManager.loadBuiltin(NoHintarrowPlugin.class);
+		ExternalPluginManager.loadBuiltin(NoHintArrowPlugin.class);
 		RuneLite.main(args);
 	}
 }

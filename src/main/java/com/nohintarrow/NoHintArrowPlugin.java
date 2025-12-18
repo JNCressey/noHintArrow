@@ -20,14 +20,14 @@ import net.runelite.api.coords.WorldPoint;
 @PluginDescriptor(
 	name = "No Hint-arrow"
 )
-public class NoHintarrowPlugin extends Plugin
+public class NoHintArrowPlugin extends Plugin
 {
 
 	@Inject
 	private Client client;
 
 	@Inject
-	private NoHintarrowConfig config;
+	private NoHintArrowConfig config;
 
 	@Inject
 	private ConfigManager configManager;
@@ -40,7 +40,7 @@ public class NoHintarrowPlugin extends Plugin
 	private OverlayManager overlayManager;
 
 	@Inject
-	private NoHintarrowOverlay overlay;
+	private NoHintArrowOverlay overlay;
 	//endregion
 
 	// Tracks how many ticks the arrow has been active for when to clear hint arrow
@@ -58,7 +58,7 @@ public class NoHintarrowPlugin extends Plugin
 		overlayManager.add(overlay);
 
 		// turn debug settings off if debug mode isn't enabled
-		if (!NoHintarrowConfig.ENABLE_DEBUG_MODE){
+		if (!NoHintArrowConfig.ENABLE_DEBUG_MODE){
 			configManager.setConfiguration("noHintArrow","doDebug",false);
 			configManager.setConfiguration("noHintArrow","doDebugMessages",false);
 		}
@@ -73,9 +73,9 @@ public class NoHintarrowPlugin extends Plugin
 	}
 
 	@Provides
-	NoHintarrowConfig provideConfig(ConfigManager configManager)
+	NoHintArrowConfig provideConfig(ConfigManager configManager)
 	{
-		return configManager.getConfig(NoHintarrowConfig.class);
+		return configManager.getConfig(NoHintArrowConfig.class);
 	}
 
 
@@ -212,14 +212,14 @@ public class NoHintarrowPlugin extends Plugin
 	private void debugHintArrowValues()
 	{
 		try {
-			String[] hintarrowTypeNames = {
+			String[] hintArrowTypeNames = {
 					"NONE",
 					"NPC",
 					"COORDINATE",
 					"PLAYER",
 					"WORLDENTITY"
 			};
-			printInChatbox("hint arrow type " + client.getHintArrowType() + " (" + hintarrowTypeNames[client.getHintArrowType()] + ")");
+			printInChatbox("hint arrow type " + client.getHintArrowType() + " (" + hintArrowTypeNames[client.getHintArrowType()] + ")");
 
 			printInChatbox(
 					"NPC name "

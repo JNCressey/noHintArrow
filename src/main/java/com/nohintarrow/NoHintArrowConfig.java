@@ -88,7 +88,7 @@ public interface NoHintArrowConfig extends Config
 	)
 	default Color alertColor()
 	{
-		return new Color(0x7F007F); // default same purple as default trade messages
+		return new Color(0x7F007F); // default same purple as incoming trade requests
 	}
 	//endregion
 

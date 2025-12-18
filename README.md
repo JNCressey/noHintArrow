@@ -31,7 +31,7 @@ Can enable a substitute marker. It doesn't flash. It looks like a square on the 
   </tr>
   <tr>
     <td>Alert Color</td>
-    <td><code>#7F007F</code> (same purple as default trade messages)</td>
+    <td><code>#7F007F</code> (same purple as incoming trade requests)</td>
     <td>Choose the color for alert text</td>
   </tr>
   <tr>

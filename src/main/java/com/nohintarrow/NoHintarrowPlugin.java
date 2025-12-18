@@ -251,9 +251,10 @@ public class NoHintarrowPlugin extends Plugin
 
 		MenuAction menuAction = event.getMenuEntry().getType();
 
+
 		//region add setHintArrow options to menu
 
-		// Coordinate from tile
+		// Coordinate from ground
 		if (menuAction == MenuAction.WALK) {
 			final int worldId = event.getMenuEntry().getWorldViewId();
 			Optional.ofNullable(client.getWorldView(worldId))
@@ -277,7 +278,23 @@ public class NoHintarrowPlugin extends Plugin
 					.onClick(e ->
 							client.setHintArrow(event.getMenuEntry().getNpc()));
 		}
+
+		// Player
+		Player player = event.getMenuEntry().getPlayer();
+		String option = event.getMenuEntry().getOption();
+		if ((player != null) && (option.equals("Follow"))) {
+			client.getMenu().createMenuEntry(-1)
+					.setOption("setHintArrow")
+					.setTarget(event.getTarget())
+					.setType(MenuAction.RUNELITE)
+					.onClick(e ->
+							client.setHintArrow(player));
+		}
+
+
+
 		//endregion
+
 	}
 
 	//endregion

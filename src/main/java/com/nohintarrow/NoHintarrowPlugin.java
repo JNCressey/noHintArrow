@@ -246,9 +246,10 @@ public class NoHintarrowPlugin extends Plugin
 	public void onMenuEntryAdded(MenuEntryAdded event) {
 		if (!config.doDebug()){ return; } // only add debug options if debug mode on
 
-		//region worldpoint from tile
 		MenuAction menuAction = event.getMenuEntry().getType();
 		final boolean hotKeyPressed = client.isKeyPressed(KeyCode.KC_SHIFT);
+
+		//region worldpoint from tile
 		if (hotKeyPressed && (menuAction == MenuAction.WALK || menuAction == MenuAction.SET_HEADING)) {
 			int worldId = event.getMenuEntry().getWorldViewId();
 			WorldView wv = client.getWorldView(worldId);
@@ -263,7 +264,7 @@ public class NoHintarrowPlugin extends Plugin
 
 			final WorldPoint worldPoint = WorldPoint.fromLocalInstance(client, selectedSceneTile.getLocalLocation());
 
-			client.createMenuEntry(-1)
+			client.getMenu().createMenuEntry(-1)
 					.setOption("setHintArrow")
 					.setTarget("Tile")
 					.setType(MenuAction.RUNELITE)
@@ -271,6 +272,20 @@ public class NoHintarrowPlugin extends Plugin
 							client.setHintArrow(worldPoint));
 		}
 		//endregion
+
+		//region NPC
+		if (hotKeyPressed && (menuAction == MenuAction.EXAMINE_NPC)) {
+
+			client.getMenu().createMenuEntry(-1)
+					.setOption("setHintArrow")
+					.setTarget(event.getTarget())
+					.setType(MenuAction.RUNELITE)
+					.onClick(e ->
+							client.setHintArrow(event.getMenuEntry().getNpc()));
+			//client.setHintArrow(event.getMenuEntry().getNpc()));
+		}
+		//endregion
+
 	}
 
 	//endregion

@@ -229,10 +229,6 @@ public class NoHintarrowPlugin extends Plugin
 							.map(Player::getName)
 							.orElse("-null-")
 			);
-			printInChatbox(
-					"worldentity "
-					+ "..." /* there is no Client::getHintArrowWorldEntity? */ //todo?
-			);
 		} catch (Exception e) {
 			printInChatbox(e.getMessage());
 			throw new RuntimeException(e);
@@ -291,12 +287,9 @@ public class NoHintarrowPlugin extends Plugin
 							client.setHintArrow(player));
 		}
 
-
-
 		//endregion
 
 	}
 
 	//endregion
-
 }

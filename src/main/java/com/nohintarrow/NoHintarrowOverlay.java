@@ -57,11 +57,11 @@ public class NoHintarrowOverlay extends Overlay{
                     OverlayUtil.renderActorOverlay(graphics, hintArrowPlayer, label, config.substituteMarkerColor());
                     break;
 
-                case HintArrowType.WORLDENTITY:
-                    /* there is no Client::getHintArrowWorldEntity? */ //todo?
+                //case HintArrowType.WORLDENTITY:
                 case HintArrowType.NONE:
                 default:
-                    //shouldn't reach this case since a marker configuration would be set
+                    //I don't see any way to handle the hint-arrow when type is HintArrowType.WORLDENTITY
+                    //do nothing
                     break;
             }
         }

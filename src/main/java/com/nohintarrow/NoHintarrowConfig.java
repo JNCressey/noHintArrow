@@ -139,7 +139,7 @@ public interface NoHintarrowConfig extends Config
 			name = "Debug Messages",
 			description = "Show debug messages in chatbox",
 			section = debugSection,
-			position = 0
+			position = 1
 	)
 	default boolean doDebugMessages()
 	{

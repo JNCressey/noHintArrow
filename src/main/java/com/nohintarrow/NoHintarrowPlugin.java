@@ -13,6 +13,8 @@ import net.runelite.client.chat.ChatMessageManager;
 import net.runelite.client.chat.QueuedMessage;
 import net.runelite.client.ui.overlay.OverlayManager;
 import java.util.Optional;
+import net.runelite.api.events.MenuEntryAdded;
+import net.runelite.api.coords.WorldPoint;
 
 @Slf4j
 @PluginDescriptor(
@@ -195,7 +197,7 @@ public class NoHintarrowPlugin extends Plugin
 	//endregion
 
 
-
+	//region debug
 	// use for testing, debug info put in chatbox
 	private void debugHintArrowValues()
 	{
@@ -237,5 +239,40 @@ public class NoHintarrowPlugin extends Plugin
 		}
 
 	}
+
+
+	// use for testing, manually set hint arrows when shift clicking on things
+	@Subscribe
+	public void onMenuEntryAdded(MenuEntryAdded event) {
+		if (!config.doDebug()){ return; } // only add debug options if debug mode on
+
+		//region worldpoint from tile
+		MenuAction menuAction = event.getMenuEntry().getType();
+		final boolean hotKeyPressed = client.isKeyPressed(KeyCode.KC_SHIFT);
+		if (hotKeyPressed && (menuAction == MenuAction.WALK || menuAction == MenuAction.SET_HEADING)) {
+			int worldId = event.getMenuEntry().getWorldViewId();
+			WorldView wv = client.getWorldView(worldId);
+			if (wv == null) {
+				return;
+			}
+
+			final Tile selectedSceneTile = wv.getSelectedSceneTile();
+			if (selectedSceneTile == null) {
+				return;
+			}
+
+			final WorldPoint worldPoint = WorldPoint.fromLocalInstance(client, selectedSceneTile.getLocalLocation());
+
+			client.createMenuEntry(-1)
+					.setOption("setHintArrow")
+					.setTarget("Tile")
+					.setType(MenuAction.RUNELITE)
+					.onClick(e ->
+							client.setHintArrow(worldPoint));
+		}
+		//endregion
+	}
+
+	//endregion
 
 }

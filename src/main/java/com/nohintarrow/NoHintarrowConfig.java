@@ -123,6 +123,18 @@ public interface NoHintarrowConfig extends Config
 	String debugSection = "debugSection";
 
 	@ConfigItem(
+			keyName = "doDebug",
+			name = "Debug Mode",
+			description = "Enable shift click to manually set hint arrows",
+			section = debugSection,
+			position = 0
+	)
+	default boolean doDebug()
+	{
+		return false; // default won't show debug menu options
+	}
+
+	@ConfigItem(
 			keyName = "doDebugMessages",
 			name = "Debug Messages",
 			description = "Show debug messages in chatbox",

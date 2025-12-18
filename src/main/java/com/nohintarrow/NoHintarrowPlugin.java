@@ -13,9 +13,7 @@ import net.runelite.client.plugins.PluginDescriptor;
 import net.runelite.client.chat.ChatMessageManager;
 import net.runelite.client.chat.QueuedMessage;
 import net.runelite.api.HintArrowType;
-import net.runelite.api.NPC;
-import net.runelite.api.Player;
-import net.runelite.api.coords.WorldPoint;
+import net.runelite.client.ui.overlay.OverlayManager;
 
 @Slf4j
 @PluginDescriptor(
@@ -32,6 +30,9 @@ public class NoHintarrowPlugin extends Plugin
 
 	@Inject
 	private ChatMessageManager chatMessageManager;
+
+	@Inject
+	private OverlayManager overlayManager;
 
 	@Inject
 	private NoHintarrowOverlay overlay;
@@ -146,7 +147,7 @@ public class NoHintarrowPlugin extends Plugin
 	{
 		clearSubstituteMarker();
 
-		if (client.getHintArrowType() != HintArrowType.NONE)
+		if (client.hasHintArrow() && (client.getHintArrowType() != HintArrowType.NONE))
 		{
 			isSubstituteMarkerSet = overlay.updateSubstituteMarker();
 		}
@@ -162,5 +163,19 @@ public class NoHintarrowPlugin extends Plugin
 	}
 
 	//endregion
+
+	@Override
+	protected void startUp() throws Exception
+	{
+		log.info("ChatHighlightPlayerPlugin started!");
+		overlayManager.add(overlay);
+	}
+
+	@Override
+	protected void shutDown() throws Exception
+	{
+		overlayManager.remove(overlay);
+		log.info("ChatHighlightPlayerPlugin stopped!");
+	}
 
 }

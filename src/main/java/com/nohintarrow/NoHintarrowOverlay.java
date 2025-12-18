@@ -89,25 +89,28 @@ public class NoHintarrowOverlay extends Overlay{
     {
         clearSubstituteMarker();
 
-        hintArrowType = client.getHintArrowType();
+        if (client.hasHintArrow())
+        {
+            hintArrowType = client.getHintArrowType();
 
-        switch (hintArrowType){
-            case HintArrowType.NPC:
-                hintArrowNPC = client.getHintArrowNpc();
-                break;
-            case HintArrowType.COORDINATE:
-                hintArrowPoint = client.getHintArrowPoint();
-                break;
-            case HintArrowType.PLAYER:
-                hintArrowPlayer = client.getHintArrowPlayer();
-                break;
+            switch (hintArrowType) {
+                case HintArrowType.NPC:
+                    hintArrowNPC = client.getHintArrowNpc();
+                    break;
+                case HintArrowType.COORDINATE:
+                    hintArrowPoint = client.getHintArrowPoint();
+                    break;
+                case HintArrowType.PLAYER:
+                    hintArrowPlayer = client.getHintArrowPlayer();
+                    break;
 
-            case HintArrowType.WORLDENTITY:
-                /* there is no client.getHintArrowWorldEntity? */
-            case HintArrowType.NONE:
-            default:
-                clearSubstituteMarker();
-                return false;
+                case HintArrowType.WORLDENTITY:
+                    /* there is no client.getHintArrowWorldEntity? */
+                case HintArrowType.NONE:
+                default:
+                    clearSubstituteMarker();
+                    return false;
+            }
         }
         return true;
     }

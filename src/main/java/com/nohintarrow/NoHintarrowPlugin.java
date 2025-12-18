@@ -209,7 +209,7 @@ public class NoHintarrowPlugin extends Plugin
 					"PLAYER",
 					"WORLDENTITY"
 			};
-			printInChatbox("hint arrow type " + String.valueOf(client.getHintArrowType()) + " (" + hintarrowTypeNames[client.getHintArrowType()] + ")");
+			printInChatbox("hint arrow type " + client.getHintArrowType() + " (" + hintarrowTypeNames[client.getHintArrowType()] + ")");
 
 			printInChatbox(
 					"NPC name "
@@ -220,7 +220,7 @@ public class NoHintarrowPlugin extends Plugin
 			printInChatbox(
 					"Coordinates "
 					+ Optional.ofNullable(client.getHintArrowPoint())
-							.map(p->String.valueOf(p.getX()) + "," + String.valueOf(p.getY()))
+							.map(p->p.getX() + "," + p.getY())
 							.orElse("-null-")
 			);
 			printInChatbox(

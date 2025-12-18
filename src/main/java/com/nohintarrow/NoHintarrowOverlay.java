@@ -2,7 +2,6 @@ package com.nohintarrow;
 
 import net.runelite.api.*;
 import net.runelite.api.Point;
-import net.runelite.client.chat.QueuedMessage;
 import net.runelite.client.ui.overlay.Overlay;
 import net.runelite.client.ui.overlay.OverlayLayer;
 import net.runelite.client.ui.overlay.OverlayPosition;

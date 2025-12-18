@@ -21,6 +21,7 @@ public interface NoHintarrowConfig extends Config
 		return 0; // default 0 seconds
 	}
 
+	//region Alert Settings
 	@ConfigSection(
 			name = "Alert Settings",
 			description = "Alert message configuration",
@@ -37,8 +38,10 @@ public interface NoHintarrowConfig extends Config
 	)
 	default boolean doAlerts()
 	{
+
 		return true; // default will show alerts
 	}
+
 	@ConfigItem(
 			keyName = "alertColor",
 			name = "Alert Color",
@@ -49,5 +52,73 @@ public interface NoHintarrowConfig extends Config
 	{
 		return new Color(0x7F007F); // default same purple as default trade messages
 	}
+	//endregion
 
+	//region Substitute Marker Settings
+	@ConfigSection(
+			name = "Substitute Marker Settings",
+			description = "Substitute Marker configuration",
+			position = 2,
+			closedByDefault = true
+	)
+	String substituteMarkerSection = "substituteMarkerSection";
+
+	@ConfigItem(
+			keyName = "doSubstituteMarker",
+			name = "Use a substitute marker",
+			description = "Show a substitute marker for the removed hint arrow",
+			section = substituteMarkerSection,
+			position = 0
+	)
+	default boolean doSubstituteMarker()
+	{
+		return false; // default won't use a substitute marker
+	}
+
+	@ConfigItem(
+			keyName = "substituteMarkerDuration",
+			name = "Duration (seconds)",
+			description = "How many seconds before the substitute marker is cleared",
+			section = substituteMarkerSection,
+			position = 1
+	)
+	default int substituteMarkerDuration()
+	{
+		return 60; // default 1 minute
+	}
+
+	@ConfigItem(
+			keyName = "substituteMarkerColor",
+			name = "Marker Color",
+			description = "Choose the color for the substitute marker",
+			section = substituteMarkerSection,
+			position = 2
+	)
+	default Color substituteMarkerColor() {
+		return Color.YELLOW; // default yellow
+	}
+
+	@ConfigItem(
+			keyName = "showSubstituteMarkerLabel",
+			name = "Show Label",
+			description = "Show a text label (\"Hint\") on the substitute marker",
+			section = substituteMarkerSection,
+			position = 3
+	)
+	default boolean showSubstituteMarkerLabel()
+	{
+		return true; // default will show label for substitute marker
+	}
+
+	@ConfigItem(
+			keyName = "substituteMarkerLabelColor",
+			name = "Label Color",
+			description = "Choose the color for label",
+			section = substituteMarkerSection,
+			position = 4
+	)
+	default Color substituteMarkerLabelColor() {
+		return Color.YELLOW; // default yellow
+	}
+	//endregion
 }

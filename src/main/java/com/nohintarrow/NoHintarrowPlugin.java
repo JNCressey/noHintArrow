@@ -114,7 +114,6 @@ public class NoHintarrowPlugin extends Plugin
 
 
 
-
 	//region remove hint-arrow
 	// the user config for clear delay converted to game ticks (1 tick = 0.6s)
 	private int getClearDelayTicks(){
@@ -196,6 +195,7 @@ public class NoHintarrowPlugin extends Plugin
 	//endregion
 
 
+
 	// use for testing, debug info put in chatbox
 	private void debugHintArrowValues()
 	{
@@ -237,7 +237,5 @@ public class NoHintarrowPlugin extends Plugin
 		}
 
 	}
-
-
 
 }

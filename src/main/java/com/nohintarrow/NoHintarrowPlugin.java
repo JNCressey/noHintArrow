@@ -171,7 +171,7 @@ public class NoHintarrowPlugin extends Plugin
 	@Override
 	protected void startUp() throws Exception
 	{
-		log.info("ChatHighlightPlayerPlugin started!");
+		log.info("no-hintarrow plugin started!");
 		overlayManager.add(overlay);
 	}
 
@@ -179,7 +179,7 @@ public class NoHintarrowPlugin extends Plugin
 	protected void shutDown() throws Exception
 	{
 		overlayManager.remove(overlay);
-		log.info("ChatHighlightPlayerPlugin stopped!");
+		log.info("no-hintarrow plugin stopped!");
 	}
 
 }

@@ -6,7 +6,7 @@ import net.runelite.client.config.ConfigItem;
 import net.runelite.client.config.ConfigSection;
 import java.awt.Color;
 
-@ConfigGroup("noHintarrow")
+@ConfigGroup("noHintArrow")
 public interface NoHintarrowConfig extends Config
 {
 	boolean ENABLE_DEBUG_MODE = false; // use false in production, set to true when debugging to access debug tools

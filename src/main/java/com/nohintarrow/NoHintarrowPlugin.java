@@ -54,12 +54,13 @@ public class NoHintarrowPlugin extends Plugin
 	@Override
 	protected void startUp() throws Exception
 	{
-		log.info("no-hintarrow plugin started!");
+		log.info("noHintArrow plugin started!");
 		overlayManager.add(overlay);
 
+		// turn debug settings off if debug mode isn't enabled
 		if (!NoHintarrowConfig.ENABLE_DEBUG_MODE){
-			configManager.setConfiguration("noHintarrow","doDebug",false);
-			configManager.setConfiguration("noHintarrow","doDebugMessages",false);
+			configManager.setConfiguration("noHintArrow","doDebug",false);
+			configManager.setConfiguration("noHintArrow","doDebugMessages",false);
 		}
 
 	}
@@ -68,7 +69,7 @@ public class NoHintarrowPlugin extends Plugin
 	protected void shutDown() throws Exception
 	{
 		overlayManager.remove(overlay);
-		log.info("no-hintarrow plugin stopped!");
+		log.info("noHintArrow plugin stopped!");
 	}
 
 	@Provides

@@ -2,7 +2,7 @@
 
 Completely remove the flashing yellow hint arrow, or let it only show for a set length of seconds.
 
-Alerts you by a game message in the chatbox when a hint arrow was removed. Settings to disable this or change color.
+Alerts you by a game message in the chatbox when a hint arrow was removed.
 
 Can enable a substitute marker. It doesn't flash. It looks like a square on the floor. 
 

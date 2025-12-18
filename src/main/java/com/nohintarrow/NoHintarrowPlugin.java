@@ -108,17 +108,24 @@ public class NoHintarrowPlugin extends Plugin
 
 		client.clearHintArrow();
 
-		// chatbox alert if enabled
+		sendAlertRemovedHintArrow();
+	}
+	//endregion
+
+	//region chatbox alerts
+	// send chatbox alert that hint-arrow was removed, if alerts enabled
+	private void sendAlertRemovedHintArrow()
+	{
 		if (config.doAlerts()) {
 			chatMessageManager.queue(
-					QueuedMessage.builder()
-							.type(ChatMessageType.GAMEMESSAGE) // Game info style
-							.runeLiteFormattedMessage(
-									String.format("<col=%06x>", config.alertColor().getRGB() & 0xFFFFFF)
-											+ "Hint arrow removed."
-											+ "</col>"
-							)
-							.build()
+				QueuedMessage.builder()
+					.type(ChatMessageType.GAMEMESSAGE) // Game info style
+					.runeLiteFormattedMessage(
+						String.format("<col=%06x>", config.alertColor().getRGB() & 0xFFFFFF)
+							+ "Hint arrow removed."
+							+ "</col>"
+					)
+					.build()
 			);
 		}
 	}

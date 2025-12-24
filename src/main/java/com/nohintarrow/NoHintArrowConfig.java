@@ -9,7 +9,7 @@ import java.awt.Color;
 @ConfigGroup("noHintArrow")
 public interface NoHintArrowConfig extends Config
 {
-	boolean ENABLE_DEBUG_MODE = false; // use false in production, set to true when debugging to access debug tools
+	//boolean ENABLE_DEBUG_MODE = false; // use false in production, set to true when debugging to access debug tools
 
 
 
@@ -26,40 +26,11 @@ public interface NoHintArrowConfig extends Config
 
 
 
-	//region debug
-	@ConfigItem(
-			keyName = "doDebug",
-			name = "Debug Mode",
-			description = "Enable shift click to manually set hint arrows",
-			position = 1,
-			hidden = !ENABLE_DEBUG_MODE
-	)
-	default boolean doDebug()
-	{
-		return false; // default won't show debug menu options
-	}
-
-
-	@ConfigItem(
-			keyName = "doDebugMessages",
-			name = "Debug Messages",
-			description = "Show debug messages in chatbox",
-			position = 2,
-			hidden = !ENABLE_DEBUG_MODE
-	)
-	default boolean doDebugMessages()
-	{
-		return false; // default won't show debug
-	}
-	//endregion
-
-
-
 	//region Alert Settings
 	@ConfigSection(
 			name = "Alert Settings",
 			description = "Alert message configuration",
-			position = 3,
+			position = 1,
 			closedByDefault = true
 	)
 	String alertSection = "alertSection";
@@ -98,7 +69,7 @@ public interface NoHintArrowConfig extends Config
 	@ConfigSection(
 			name = "Substitute Marker Settings",
 			description = "Substitute Marker configuration",
-			position = 4,
+			position = 2,
 			closedByDefault = true
 	)
 	String substituteMarkerSection = "substituteMarkerSection";
@@ -152,6 +123,44 @@ public interface NoHintArrowConfig extends Config
 	default boolean showSubstituteMarkerLabel()
 	{
 		return true; // default will show label for substitute marker
+	}
+	//endregion
+
+
+
+	//region debug
+	@ConfigSection(
+			name = "Debug Options",
+			description = "Various options for debugging",
+			position = 3,
+			closedByDefault = true
+	)
+	String debugSection = "debugSection";
+
+
+	@ConfigItem(
+			keyName = "doDebug",
+			name = "Debug Mode",
+			description = "Enable shift click to manually set hint arrows",
+			section = debugSection,
+			position = 0
+	)
+	default boolean doDebug()
+	{
+		return false; // default won't show debug menu options
+	}
+
+
+	@ConfigItem(
+			keyName = "doDebugMessages",
+			name = "Debug Messages",
+			description = "Show debug messages in chatbox",
+			section = debugSection,
+			position = 1
+	)
+	default boolean doDebugMessages()
+	{
+		return false; // default won't show debug
 	}
 	//endregion
 }

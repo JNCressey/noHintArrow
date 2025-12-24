@@ -56,13 +56,6 @@ public class NoHintArrowPlugin extends Plugin
 	{
 		log.info("noHintArrow plugin started!");
 		overlayManager.add(overlay);
-
-		// turn debug settings off if debug mode isn't enabled
-		if (!NoHintArrowConfig.ENABLE_DEBUG_MODE){
-			configManager.setConfiguration("noHintArrow","doDebug",false);
-			configManager.setConfiguration("noHintArrow","doDebugMessages",false);
-		}
-
 	}
 
 	@Override
